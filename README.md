@@ -32,22 +32,29 @@ The project uses Apache Maven as the build technology and relies only on a few a
 and Apache Commons-Cli for command line processing.
 
 #To build
+```{r,engine='bash',clean}
 $ mvn clean compile 
-
+```
 #To package into an executable jar
+```{r,engine='bash',package}
 $mvn package
-
-
+```
 #To run unit tests
+```{r,engine='bash',package}
 mvn clean test
+```
 
 Running
 -------
 The build is configured to create an executable 'fat jar'. Executing the software from the command line is accomplished with
+```{r,engine='bash',execute}
 $java -jar target/number-to-english-transformer-1.0.jar 
+```
 
 The help context is retrieved by running with the '-h' or no argument at all.  
+```{r,engine='bash',execute-h}
 $java -jar target/number-to-english-transformer-1.0.jar -h 
+```
 
 Usage context is as follows:
 ```{r, engine='bash', usage}
