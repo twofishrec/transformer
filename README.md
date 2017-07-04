@@ -50,13 +50,14 @@ The help context is retrieved by running with the '-h' or no argument at all.
 $java -jar target/number-to-english-transformer-1.0.jar -h 
 
 Usage context is as follows:
+```{r, engine='bash', usage}
 usage: java -jar number-to-english-transformer.jar
  -h,--help                 show help
  -i,--input-number <arg>   the number to be transformed into
                            English(Examples: 9, 23, -345634534223)
  -t,--transformer <arg>    the transform strategy to use, default is
                            'Complex', other option is 'Simple'
-
+```
 
 The '-t' option provides a mechanism for using the more simplistic implementation, by default the complex strategy is used as it is
 not constrained in the same manner as the simple.
