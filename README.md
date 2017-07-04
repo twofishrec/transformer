@@ -61,3 +61,11 @@ The '-t' option provides a mechanism for using the more simplistic implementatio
 not constrained in the same manner as the simple.
 
 The maximum test that performed on the complex strategy was a test with an input value: 2111111000030450123456789987654321000
+
+Design
+------
+The design for this software is straightforward. An interface named Transformer was defined to establish the core calling contract. A based implementation was defined to maintain the primary commonalities of all implementations leaving only the core implementations to the implementing classes. 
+
+The base class holds the key interface point into the implementations with the 'transformNumberToEnglish' method, leaving the 'convert' method abstract for the implementation classes. Thisleaves open the possibility of introducing new implementations.
+
+Depending on the use cases, the reference data could be externalized into property files to allow for externalized configuration/adjusting or from a datasource (in memory or otherwise).
