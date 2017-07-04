@@ -17,7 +17,8 @@ of input values by determining the number of sets of 3 characters exist in the i
 of data bearing nodes for each group of 3 along with the name those 3 characters represent. For example, if the input value was 
 100, only 1 data bearing node would be found and it would simply be handled as 'hundred'. However, in the case of 
 100,000, 2 data bearing nodes would be found, one with 100 with a name 'thousand' and one with 000.  After analyzing the inputs
-and building up the data node list, the assembler is called to then construct the english tranform.
+and building up the data node list, the assembler is called to then construct the english tranform. This strategy has been tested 
+with an UnDecillion value.
 
 In both strategies, a set of base reference data is used as lookup references for a min set of values, 1-19,20-90 by tens.  For 
 the complex strategy there is also a reference data set containing the names of the large numbers up to novemvigintillion. 
