@@ -43,10 +43,10 @@ mvn clean test
 Running
 -------
 The build is configured to create an executable 'fat jar'. Executing the software from the command line is accomplished with
-$java -jar target/number-to-english-transformer-1.0-SNAPSHOT.jar 
+$java -jar target/number-to-english-transformer-1.0.jar 
 
 The help context is retrieved by running with the '-h' or no argument at all.  
-$java -jar target/number-to-english-transformer-1.0-SNAPSHOT.jar -h 
+$java -jar target/number-to-english-transformer-1.0.jar -h 
 
 Usage context is as follows:
 usage: java -jar number-to-english-transformer.jar

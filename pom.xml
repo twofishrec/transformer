@@ -4,8 +4,12 @@
     <groupId>org.sandbox.transformer</groupId>
     <artifactId>number-to-english-transformer</artifactId>
     <packaging>jar</packaging>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
     <name>number-to-english-transformer</name>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
 
     <dependencies>
         <dependency>
