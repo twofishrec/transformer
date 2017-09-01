@@ -1,34 +1,37 @@
 package org.sandbox.transformer;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.regex.Pattern;
+
+//import java.util.logging.Logger;
 
 /**
  * Created by twofish on 7/3/17.
  */
 public abstract class TransformerBase implements Transformer {
 
-    protected Logger logger = LogManager.getLogger();
-    protected final String space = " ";
+//    Logger logger = LogManager.getLogger();
+    Logger logger = LoggerFactory.getLogger("TransformerBase");
+
+    final String space = " ";
 
 
-    protected final Long QUINTILLION = 1000000000000000000L;
-    protected final Long QUADRILLION = 1000000000000000L;
-    protected final Long TRILLION    = 1000000000000L;
-    protected final Integer BILLION  = 1000000000;
-    protected final Integer MILLION  = 1000000;
-    protected final Integer THOUSAND = 1000;
-    protected final Integer HUNDRED  = 100;
-    protected final Integer TEN      = 10;
-    protected final Integer TWENTY   = 20;
+    final Long QUINTILLION = 1000000000000000000L;
+    final Long QUADRILLION = 1000000000000000L;
+    final Long TRILLION    = 1000000000000L;
+    final Integer BILLION  = 1000000000;
+    final Integer MILLION  = 1000000;
+    final Integer THOUSAND = 1000;
+    final Integer HUNDRED  = 100;
+    final Integer TEN      = 10;
+    final Integer TWENTY   = 20;
 
 
     private boolean validInputs(final String input) {
         logger.trace("Validating input contains only numeric entries");
-        boolean status = Pattern.matches("^[0-9]*$", input);
-        return status;
+        return Pattern.matches("^[0-9]*$", input);
     }
     public String transformNumberToEnglish(final String input) {
         String translatedResponse="";

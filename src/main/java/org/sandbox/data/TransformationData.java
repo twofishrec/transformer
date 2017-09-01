@@ -14,15 +14,8 @@ public class TransformationData {
         return data;
     }
 
-    public void setData(int data) {
-        this.data = data;
-    }
     public String getNumberName() {
         return numberName;
-    }
-
-    public void setNumberName(String numberName) {
-        this.numberName = numberName;
     }
 
 }
