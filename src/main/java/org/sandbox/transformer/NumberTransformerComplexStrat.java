@@ -1,10 +1,13 @@
 package org.sandbox.transformer;
 
+import org.jooq.lambda.Seq;
 import org.sandbox.data.DataReference;
 import org.sandbox.data.TransformationData;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static java.util.stream.Collectors.toList;
 
 
 /**
@@ -22,12 +25,12 @@ public class NumberTransformerComplexStrat extends TransformerBase {
         logger.info("Initializing org.sandbox.transformer.NumberTransformerComplexStrat");
     }
 
-    public List<TransformationData> parseInputs(String input) {
+    private List<TransformationData> parseInputs(String input) {
         logger.trace("Parsing inputs to seed convert function.");
-        List<TransformationData> masterList = new ArrayList<TransformationData>();
+        List<TransformationData> masterList = new ArrayList<>();
         int l = input.length();
-        int startIndex = l-1;
-        int endIndex=0;
+        int startIndex = l - 1;
+        int endIndex = 0;
         char[] tmp = new char[3];
         int tmpIdx = 2;
         tmp[0] = tmp[1] = tmp[2] = ' ';
@@ -35,7 +38,7 @@ public class NumberTransformerComplexStrat extends TransformerBase {
             //This is for a number with a minimum size of 100
             int numIters = l / 3;
             int numRemainder = l % 3;
-            int lastIterationNumber =0;
+            int lastIterationNumber = 0;
 
             for (int j = 0; j < numIters; j++) {
                 for (int i = 0; i < 3; i++) {
@@ -69,26 +72,14 @@ public class NumberTransformerComplexStrat extends TransformerBase {
     protected String convert(String input) {
         logger.trace("Initiating convert function, calling parseInputs(input)...");
         List<TransformationData> masterList = parseInputs(input);
-        TransformationData[] td = masterList.toArray(new TransformationData[masterList.size()]);
 
         logger.trace("Traversing list of data to build up English transform");
-
-        int tdIdx = td.length-1;
         StringBuilder translatedOutput = new StringBuilder();
-
-        //If it's only a zero, short-circuit the loop
-        if (td.length==1 && td[0].getData()==0) {
-            translatedOutput.append(assembler(td[0].getData()));
-        } else {
-            for (int i=tdIdx; i>=0;i--) {
-                if (td[i].getData()>0) {
-                    translatedOutput.append(assembler(td[i].getData()));
-
-                    if (!td[i].getNumberName().equals("tens"))
-                        translatedOutput.append(space + td[i].getNumberName() + space);
-                }
-            }
-        }
+        Seq.seq(masterList).reverse().collect(toList()).stream().forEach(data -> {
+            translatedOutput.append(assembler(data.getData()));
+            if (!data.getNumberName().equals("tens"))
+                translatedOutput.append(space).append(data.getNumberName()).append(space);
+        });
         return translatedOutput.toString().trim();
     }
 
@@ -96,7 +87,7 @@ public class NumberTransformerComplexStrat extends TransformerBase {
         logger.trace("Assembler operating on input " + input);
         StringBuilder translatedNumber = new StringBuilder();
         if (input >= HUNDRED) {
-            translatedNumber.append(assembler(input / HUNDRED) + " hundred ");
+            translatedNumber.append(assembler(input / HUNDRED)).append(" hundred ");
             translatedNumber.append(assembler(input % HUNDRED));
         } else if (input >= TEN) {
 
@@ -106,7 +97,7 @@ public class NumberTransformerComplexStrat extends TransformerBase {
                 translatedNumber.append(DataReference.baseReference.get((input / TEN) * TEN));
                 int remainder = input % TEN;
                 if (remainder != 0)
-                    translatedNumber.append(" " + DataReference.baseReference.get(remainder));
+                    translatedNumber.append(" ").append(DataReference.baseReference.get(remainder));
             }
 
         } else if (input < TEN) {

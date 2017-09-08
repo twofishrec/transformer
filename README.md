@@ -78,3 +78,6 @@ The design for this software is straightforward. An interface named Transformer 
 The base class holds the key interface point into the implementations with the 'transformNumberToEnglish' method, leaving the 'convert' method abstract for the implementation classes. Thisleaves open the possibility of introducing new implementations.
 
 Depending on the use cases, the reference data could be externalized into property files to allow for externalized configuration/adjusting or from a datasource (in memory or otherwise).
+
+
+Made some changes to make use of the Streams API.

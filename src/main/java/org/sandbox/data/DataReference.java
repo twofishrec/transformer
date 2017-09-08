@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class DataReference {
 
-    public static final Map<Integer, String> baseReference = new HashMap<Integer, String>();
+    public static final Map<Integer, String> baseReference = new HashMap<>();
     static {
         baseReference.put(0, "zero");
         baseReference.put(1, "one");
@@ -35,7 +35,7 @@ public class DataReference {
         baseReference.put(70, "seventy");
         baseReference.put(80, "eighty");
         baseReference.put(90, "ninety");
-    };
+    }
 
 
     public static final Map<Integer, String>  numberNames = new HashMap<>();

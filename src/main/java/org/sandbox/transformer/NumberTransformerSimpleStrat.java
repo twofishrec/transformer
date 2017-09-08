@@ -17,6 +17,7 @@ public class NumberTransformerSimpleStrat extends TransformerBase {
         logger.info("Initializing org.sandbox.transformer.NumberTransformerComplexStrat");
     }
 
+    @SuppressWarnings("ResultOfMethodCallIgnored")
     @Override
     protected String convert(String input) {
         logger.trace("converting input...");
@@ -40,30 +41,30 @@ public class NumberTransformerSimpleStrat extends TransformerBase {
 
         if (input >= QUINTILLION) {
             logger.trace("value greater than " + QUINTILLION);
-            translatedNumber.append(transformNumberToEnglish(input / QUINTILLION) + " quintillion ");
+            translatedNumber.append(transformNumberToEnglish(input / QUINTILLION)).append(" quintillion ");
             translatedNumber.append(transformNumberToEnglish(input % QUINTILLION));
         } else if (input >= QUADRILLION) {
-            translatedNumber.append(transformNumberToEnglish(input / QUADRILLION) + " quadrillion ");
+            translatedNumber.append(transformNumberToEnglish(input / QUADRILLION)).append(" quadrillion ");
             translatedNumber.append(transformNumberToEnglish(input % QUADRILLION));
 
         } else if (input >= TRILLION) {
-            translatedNumber.append(transformNumberToEnglish(input / TRILLION) + " trillion ");
+            translatedNumber.append(transformNumberToEnglish(input / TRILLION)).append(" trillion ");
             translatedNumber.append(transformNumberToEnglish(input % TRILLION));
 
         } else if (input >= BILLION) {
-            translatedNumber.append(transformNumberToEnglish(input / BILLION) + " billion ");
+            translatedNumber.append(transformNumberToEnglish(input / BILLION)).append(" billion ");
             translatedNumber.append(transformNumberToEnglish(input % BILLION));
 
         } else if (input >= MILLION) {
-            translatedNumber.append(transformNumberToEnglish(input / MILLION) + " million ");
+            translatedNumber.append(transformNumberToEnglish(input / MILLION)).append(" million ");
             translatedNumber.append(transformNumberToEnglish(input % MILLION));
 
         } else if (input >= THOUSAND) {
-            translatedNumber.append(transformNumberToEnglish(input / THOUSAND) + " thousand ");
+            translatedNumber.append(transformNumberToEnglish(input / THOUSAND)).append(" thousand ");
             translatedNumber.append(transformNumberToEnglish(input % THOUSAND));
 
         } else if (input >= HUNDRED) {
-            translatedNumber.append(transformNumberToEnglish(input / HUNDRED) + " hundred ");
+            translatedNumber.append(transformNumberToEnglish(input / HUNDRED)).append(" hundred ");
             translatedNumber.append(transformNumberToEnglish(input % HUNDRED));
 
         } else if (input >= TEN) {
@@ -74,8 +75,7 @@ public class NumberTransformerSimpleStrat extends TransformerBase {
                 translatedNumber.append(DataReference.baseReference.get((Integer.parseInt(input.toString()) / TEN) * TEN));
                 long remainder = input % TEN;
                 if (remainder != 0)
-                    translatedNumber.append(" " + DataReference.baseReference.get(Integer.parseInt(new Long(remainder).toString())));
-                ;
+                    translatedNumber.append(" ").append(DataReference.baseReference.get(Integer.parseInt(Long.toString(remainder))));
             }
 
         } else if (input < TEN) {

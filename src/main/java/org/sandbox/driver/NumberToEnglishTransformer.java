@@ -1,11 +1,13 @@
 package org.sandbox.driver;
 
 import org.apache.commons.cli.*;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.sandbox.transformer.NumberTransformerComplexStrat;
 import org.sandbox.transformer.NumberTransformerSimpleStrat;
 import org.sandbox.transformer.Transformer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+//import java.util.logging.Logger;
+
 
 /**
  * This is the primary driver, based on user input
@@ -13,19 +15,16 @@ import org.sandbox.transformer.Transformer;
  * or the more Complex Strategy transformer will be used.  In the case of an error
  * on input of the the strategy name, the Complex Strategy is the default.
  */
-public class NumberToEnglishTransformer {
+class NumberToEnglishTransformer {
 
-    public static final String HelpMessage =
-           ("**** Usage java -jar number-to-english-transformer.jar input-value=<number to transform> and (optional)translator=<SimpleStrat|ComplexStrat>   ***");
-
-    private Options options = new Options();
-    private Logger logger = LogManager.getLogger();
+    private final Options options = new Options();
+//    private final Logger logger = LogManager.getLogger();
+    private final Logger logger = LoggerFactory.getLogger("NumberToEnglishTransformer");
     private String inputValue;
-    private String transformStrategy = "complex";
-    Transformer transformer=new NumberTransformerComplexStrat();
+    private Transformer transformer=new NumberTransformerComplexStrat();
 
 
-    public NumberToEnglishTransformer() {
+    private NumberToEnglishTransformer() {
 
         options.addOption("h", "help", false, "show help");
         options.addOption("i", "input-number", true , "the number to be transformed into English(Examples: 9, 23, -345634534223)");
@@ -34,9 +33,9 @@ public class NumberToEnglishTransformer {
     }
 
 
-    public void parse(String[] inputArguments) {
+    private void parse(String[] inputArguments) {
         CommandLineParser parser = new DefaultParser();
-        CommandLine cmd = null;
+        CommandLine cmd;
 
         try {
             cmd = parser.parse(options,inputArguments);
@@ -50,7 +49,7 @@ public class NumberToEnglishTransformer {
                 printHelp();
             }
             if (cmd.hasOption('t')) {
-                transformStrategy = cmd.getOptionValue("t");
+                String transformStrategy = cmd.getOptionValue("t");
                 logger.info("Retriving transformer argument " + transformStrategy);
                 if (transformStrategy.equalsIgnoreCase("simple")) {
                     logger.info("Using default logger--complex strategy");
@@ -64,12 +63,12 @@ public class NumberToEnglishTransformer {
 
 
         } catch (ParseException e) {
-            logger.error("Error encountered parsing inputs, check the inputs and retry.");;
+            logger.error("Error encountered parsing inputs, check the inputs and retry.");
             printHelp();
         }
     }
 
-    public void transform() {
+    private void transform() {
         String output = transformer.transformNumberToEnglish(inputValue);
         if (output.contains("INVALID") || output.contains("ERROR")) {
             System.out.println("An error was encountered during transformation. This is typically due to an invalid character in the input value.");
@@ -80,7 +79,7 @@ public class NumberToEnglishTransformer {
     }
 
 
-    public void printHelp() {
+    private void printHelp() {
         HelpFormatter formatter = new HelpFormatter();
         formatter.printHelp("java -jar number-to-english-transformer.jar", options);
         System.exit(0);
