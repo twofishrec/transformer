@@ -79,5 +79,4 @@ The base class holds the key interface point into the implementations with the '
 
 Depending on the use cases, the reference data could be externalized into property files to allow for externalized configuration/adjusting or from a datasource (in memory or otherwise).
 
-
-Made some changes to make use of the Streams API.
+The recent work replaced some verbose looping constructs with the Streams API.
