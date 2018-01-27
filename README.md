@@ -41,7 +41,7 @@ $mvn package
 ```
 #To run unit tests
 ```{r,engine='bash',package}
-mvn clean test
+$mvn clean test
 ```
 
 Running
@@ -58,7 +58,7 @@ $java -jar target/number-to-english-transformer-1.0.jar -h
 
 Usage context is as follows:
 ```{r, engine='bash', usage}
-usage: java -jar number-to-english-transformer.jar
+$usage: java -jar number-to-english-transformer.jar
  -h,--help                 show help
  -i,--input-number <arg>   the number to be transformed into
                            English(Examples: 9, 23, -345634534223)
