@@ -3,7 +3,7 @@ package org.sandbox.transformer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.regex.Pattern;
+import static java.util.regex.Pattern.matches;
 
 
 /**
@@ -29,7 +29,7 @@ public abstract class TransformerBase implements Transformer {
 
     private boolean validInputs(final String input) {
         logger.trace("Validating input contains only numeric entries");
-        return Pattern.matches("^[0-9]*$", input);
+        return matches("^[0-9]*$", input);
     }
     public String transformNumberToEnglish(final String input) {
         String translatedResponse="";
