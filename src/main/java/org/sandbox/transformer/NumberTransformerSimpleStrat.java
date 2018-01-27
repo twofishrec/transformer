@@ -3,6 +3,8 @@ package org.sandbox.transformer;
 
 import org.sandbox.data.DataReference;
 
+import static java.lang.Long.*;
+
 /**
  * Class to convert input numbers to English words.
  * This approach uses a naive approach and relies on the built in Java
@@ -24,8 +26,8 @@ public class NumberTransformerSimpleStrat extends TransformerBase {
         String response;
         try {
             logger.trace("testing the length of the input");
-            Long.parseLong(input);
-            response = transformNumberToEnglish(Long.parseLong(input));
+            parseLong(input);
+            response = transformNumberToEnglish(parseLong(input));
         } catch (NumberFormatException nfe) {
             logger.error("The provided input exceeded the transformers size limitation, "+
                     "retry using the ComplexStrat transformer");
