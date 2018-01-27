@@ -22,7 +22,6 @@ public class NumberTransformerComplexStratTest {
                 "nine hundred eighty seven billion six hundred fifty four million three hundred twenty one thousand", answer);
     }
 
-
     @Test
     public void testNumberTransformer2Decillion()
     {
@@ -33,7 +32,6 @@ public class NumberTransformerComplexStratTest {
                 "fifty quintillion one hundred twenty three quadrillion four hundred fifty six trillion seven hundred eighty nine billion " +
                 "nine hundred eighty seven million six hundred fifty four thousand three hundred twenty one", answer);
     }
-
 
     @Test
     public void testNumberTransformer2Quintillion()
@@ -71,7 +69,6 @@ public class NumberTransformerComplexStratTest {
         assertEquals("two trillion one hundred eleven billion thirty thousand four hundred fifty", answer);
     }
 
-
     @Test
     public void testNumberTransformer2Billion()
     {
@@ -80,7 +77,6 @@ public class NumberTransformerComplexStratTest {
         String answer = myNumberTransformer.transformNumberToEnglish("2000030450");
         assertEquals("two billion thirty thousand four hundred fifty", answer);
     }
-
 
     @Test
     public void testNumberTransformer2030450()
@@ -91,7 +87,6 @@ public class NumberTransformerComplexStratTest {
         assertEquals("two million thirty thousand four hundred fifty", answer);
     }
 
-
     @Test
     public void testNumberTransformer230450()
     {
@@ -101,7 +96,6 @@ public class NumberTransformerComplexStratTest {
         assertEquals("two hundred thirty thousand four hundred fifty", answer);
     }
 
-
     @Test
     public void testNumberTransformer23450()
     {
@@ -110,7 +104,6 @@ public class NumberTransformerComplexStratTest {
         String answer = myNumberTransformer.transformNumberToEnglish("23450");
         assertEquals("twenty three thousand four hundred fifty", answer);
     }
-
 
     @Test
     public void testNumberTransformer2345()
@@ -129,7 +122,6 @@ public class NumberTransformerComplexStratTest {
         String answer = myNumberTransformer.transformNumberToEnglish("5237");
         assertEquals("five thousand two hundred thirty seven", answer);
     }
-
 
     @Test
     public void testNumberTransformer221()
@@ -176,7 +168,6 @@ public class NumberTransformerComplexStratTest {
         assertEquals("five", answer);
     }
 
-
     @Test
     public void testNumberTransformer19()
     {
@@ -203,5 +194,4 @@ public class NumberTransformerComplexStratTest {
         String answer = myNumberTransformerSimpleStrat.transformNumberToEnglish("-21110");
         assertEquals("negative twenty one thousand one hundred ten", answer);
     }
-
 }

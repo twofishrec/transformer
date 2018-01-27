@@ -36,7 +36,6 @@ public class NumberTransformerSimpleStrat extends TransformerBase {
         return response;
     }
 
-
     private String transformNumberToEnglish(final Long input) {
         logger.trace("transformNumberToEnglish(long input) with " + input);
         StringBuilder translatedNumber = new StringBuilder();

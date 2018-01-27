@@ -18,7 +18,6 @@ import org.slf4j.LoggerFactory;
 class NumberToEnglishTransformer {
 
     private final Options options = new Options();
-//    private final Logger logger = LogManager.getLogger();
     private final Logger logger = LoggerFactory.getLogger("NumberToEnglishTransformer");
     private String inputValue;
     private Transformer transformer=new NumberTransformerComplexStrat();
@@ -32,14 +31,15 @@ class NumberToEnglishTransformer {
                 "'Complex', other option is 'Simple'");
     }
 
-
     private void parse(String[] inputArguments) {
         CommandLineParser parser = new DefaultParser();
         CommandLine cmd;
 
         try {
             cmd = parser.parse(options,inputArguments);
-            if (cmd.hasOption('h')) { printHelp(); }
+            if (cmd.hasOption('h')) {
+                printHelp();
+            }
             if (cmd.hasOption('i')) {
                 inputValue = cmd.getOptionValue("i");
                 logger.info("Retriving input-number arguument " + inputValue);
@@ -61,7 +61,6 @@ class NumberToEnglishTransformer {
                 }
             }
 
-
         } catch (ParseException e) {
             logger.error("Error encountered parsing inputs, check the inputs and retry.");
             printHelp();
@@ -78,13 +77,11 @@ class NumberToEnglishTransformer {
         }
     }
 
-
     private void printHelp() {
         HelpFormatter formatter = new HelpFormatter();
         formatter.printHelp("java -jar number-to-english-transformer.jar", options);
         System.exit(0);
     }
-
 
     public static void main(String[] args) {
         NumberToEnglishTransformer transformer = new NumberToEnglishTransformer();

@@ -5,14 +5,12 @@ import org.slf4j.LoggerFactory;
 
 import java.util.regex.Pattern;
 
-//import java.util.logging.Logger;
 
 /**
  * Created by twofish on 7/3/17.
  */
 public abstract class TransformerBase implements Transformer {
 
-//    Logger logger = LogManager.getLogger();
     Logger logger = LoggerFactory.getLogger("TransformerBase");
 
     final String space = " ";
