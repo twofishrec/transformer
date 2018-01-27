@@ -33,7 +33,7 @@ and Apache Commons-Cli for command line processing.
 
 #To build
 ```{r,engine='bash',clean}
-$ mvn clean compile 
+$mvn clean compile 
 ```
 #To package into an executable jar
 ```{r,engine='bash',package}
