@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Pull') {
       steps {
-        git(url: 'https://github.com/twofishrec/transformer.git', branch: 'master')
+        git(url: 'https://github.com/twofishrec/transformer.git', branch: 'blue-ocean')
       }
     }
     stage('') {
